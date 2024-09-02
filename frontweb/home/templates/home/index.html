@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend of websocket</title>
+</head>
+<body>
+    <h1>welcome to websocket Frontend</h1>
+    <script>
+        let obj = new WebSocket("ws://127.0.0.1:8000/ws/ac/")
+        // by event method.
+        // obj.addEventListener('open', () => {
+        //     console.log("websocket connection connected....")
+        //     obj.send("hii this is a default message.")
+        // })
+        // obj.addEventListener('message', (e) => {
+        //     console.log("message recived from server....",e)
+        // })
+        // by general object method
+        obj.onopen = () => {
+            console.log("websocket connected....")
+            obj.send("hii this is a default message.")
+        }
+        obj.onmessage = (e) => {
+            console.log(
+                "message recived...",
+                e
+            )
+        }
+        obj.onerror = (e) => {
+            console.log('websocket error occured..',e)
+        }
+    </script>
+</body>
+</html>
